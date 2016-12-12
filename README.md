@@ -6,6 +6,6 @@ MySQL 5.1.73
 ###signup.php
 新規ユーザー登録を行います。ユーザー名とパスワードを入力して、パスワードはpassword_hash()を用いてパスワードハッシュを作成してDBのuserテーブルに挿入してます。
 ###login.php
-signup.phpで作成したパスワードハッシュとユーザーが入力したパスワードをpassword_verify()を用いて認証する。
+signup.phpで作成したパスワードハッシュとユーザーが入力したパスワードをpassword_verify()を用いて認証します。
 ###作品掲載
 http://210-140-96-142.jp-east.compute.idcfcloud.com/php/bin/login.php
