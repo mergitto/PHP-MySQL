@@ -10,7 +10,7 @@ password_hash($password, PASSWORD_DEFAULT)
 ```
 password_hash()を用いてパスワードハッシュを作成してDBのuserテーブルに挿入してます。
 ###login.php,logout.php
-*login.php*   
+**login.php**   
 signup.phpで作成したパスワードハッシュとユーザーが入力したパスワードをpassword_verify()を用いて認証します。
 ```php
 password_verify($password, $row['password'])　//$passwordはユーザーの入力、$row['password']はDBより取り出したハッシュパスワードです。
@@ -19,7 +19,7 @@ password_verify($password, $row['password'])　//$passwordはユーザーの入�
 ```
 $_SESSION['USERID'] = $userid;
 ```
-*logout.php*   
+**logout.php**   
 login.phpで発行したsession変数を破棄します
 ```
 session_destroy();
