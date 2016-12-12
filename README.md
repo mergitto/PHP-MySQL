@@ -19,7 +19,7 @@ password_verify($password, $row['password'])　//$passwordはユーザーの入�
 ```
 $_SESSION['USERID'] = $userid;
 ```
-**logout.php**     
+**logout.php**<br>
 login.phpで発行したsession変数を破棄します
 ```
 session_destroy();
