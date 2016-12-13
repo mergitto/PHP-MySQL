@@ -10,6 +10,15 @@ tr{
 ul{
   list-style: none;
 }
+input[type='submit']{
+  background-color: #323a45;
+  color: white;
+  height: 25px;
+  border-style: none;
+}
+.search{
+  margin-bottom: 10px;
+}
 .middle-text{
   display: -webkit-flex;
   display: flex;
@@ -19,12 +28,12 @@ ul{
   justify-content: center;
 }
 .contents{
-  width: 80%;
+  width: 90%;
   height: auto;
   padding: 0 15px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
+  margin-top: 100px;
   clear: both;
 }
 .contents-head{
@@ -60,7 +69,7 @@ ul{
   cursor: pointer;
 }
 .select-contents{
-  width: 300px;
+  width: 270px;
   height: 510px;
   margin: 14px;
   margin-top: 0;
@@ -142,7 +151,7 @@ ul{
 }
 .contents-image{
   background-color: #323a45;
-  width: 270px;
+  width: 240px;
   height: 192px;
   margin-bottom: 0;
   font-size: 20px;
