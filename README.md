@@ -26,14 +26,6 @@ session_destroy();
 ```
 **password.php**<br>
 password_hash()とpassword_verify()はphp5.5.0以降の関数なのでphp5.5.0以前の環境においても使用できるようにした[password_compatライブラリ](https://github.com/ircmaxell/password_compat)のpassword.phpを使用しています。    
-###DbManager.php
-PDOを用いてMySQLと接続しています。
-```
-//dbName, userName, passwordを自分の環境に合わせて変更してください
-$dsn = 'mysql:dbname=dbName; host=localhost; charset=utf8';
-$usr = 'userName';
-$passwd = 'password';
-```    
 ###top.php
 メインの画面になります。session変数を用いてゲストでログインしたときとID登録をしてログインしたときでは使える機能に差ができるようにしています。<br>
 ###
@@ -49,6 +41,14 @@ if(!isset($_SESSION['USERID'])){
   header("Location: http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/login.php");
 }
 ```   
+###DbManager.php
+PDOを用いてMySQLと接続しています。
+```
+//dbName, userName, passwordを自分の環境に合わせて変更してください
+$dsn = 'mysql:dbname=dbName; host=localhost; charset=utf8';
+$usr = 'userName';
+$passwd = 'password';
+```    
 ###getcsv.php, createtable.php, insert.php
 **getcsv.php**<br>
 [鹿児島県の観光情報のオープンデータ（csv形式）](https://www.city.kagoshima.lg.jp/jousys/documents/5-1_kankou.csv)を読み込み、phpで連想配列として取り込む処理を書いてます。   
