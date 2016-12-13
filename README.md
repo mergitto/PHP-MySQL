@@ -42,6 +42,13 @@ $passwd = 'password';
 | 個別ID          | 全て             | ジャンル検索          | リンク付き |
 | ゲスト          | 10件             | 無し                 | 無し       |
 ### 
+ユーザーがゲスト、もしくは登録IDからログインせずに、urlを直打ちしたときにはログイン画面に飛ぶようにしている。
+```   
+//$_SESSION['USERID']に値が無ければ（ログインしていなければ）login.phpに返す
+if(!isset($_SESSION['USERID'])){
+  header("Location: http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/login.php");
+}
+```   
 ###getcsv.php, createtable.php, insert.php
 **getcsv.php**<br>
 [鹿児島県の観光情報のオープンデータ（csv形式）](https://www.city.kagoshima.lg.jp/jousys/documents/5-1_kankou.csv)を読み込み、phpで連想配列として取り込む処理を書いてます。   
