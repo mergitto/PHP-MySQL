@@ -19,9 +19,6 @@ $table_name = "kagoshima";
   echo $create_user;
   //$create_user_result = $db->query($create_user); //create文を実行するときのみ外す
 
-  $create_favorite = "CREATE TABLE IF NOT EXISTS favorite(id int(5) primary key auto_increment, name varchar(20),管理ID text);";
-  //$create_favorite_result = $db->query($create_favorite); //create文を実行するときのみ外す
-
 }catch(PDOException $e){
   print "エラーメッセージ：{$e->getMessage()}";
 }

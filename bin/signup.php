@@ -35,7 +35,7 @@ if (isset($_POST["signUp"])) {
             $stmt->execute(array($username, password_hash($password, PASSWORD_DEFAULT)));
             $userid = $db->lastinsertid();  // 登録した(DB側でauto_incrementした)IDを$useridに入れる
 
-            $SignUpMessage = '登録が完了しました。あなたの登録IDは '. $userid. ' です。パスワードは '. $password. ' です。';  // ログイン時に使用するIDとパスワード
+            $SignUpMessage = '登録が完了しました。あなたの登録IDは '. $username. ' です。パスワードは '. $password. ' です。';  // ログイン時に使用するIDとパスワード
         } catch (PDOException $e) {
             $errorMessage = 'データベースエラー';
             // $e->getMessage() でエラー内容を参照可能（デバック時のみ表示）
@@ -58,7 +58,7 @@ if (isset($_POST["signUp"])) {
 <body>
 <div class="container">
     <div class="login-head-btn">
-        <a href="login.php"><button type="button">戻る</button></a>
+        <a href="login.php"><button type="button">ログイン</button></a>
     </div>
     <div class="title">
         <h1>新規登録画面</h1>

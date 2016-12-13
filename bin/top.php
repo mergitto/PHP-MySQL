@@ -16,7 +16,6 @@ if(!is_null($genre) && !($_SESSION['USERID'] == 'ゲスト') ){
   $sql = "select * from kagoshima";
 }
 $sql_result = $db->query($sql); //$sqlを実行
-
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +25,7 @@ $sql_result = $db->query($sql); //$sqlを実行
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../script/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <title>鹿児島の観光情報</title>
 </head>
@@ -45,7 +45,6 @@ $sql_result = $db->query($sql); //$sqlを実行
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right sp_gnav">
-                <li><a href="#">ホーム</a></li>
                 <li><a href="login.php">ログイン</a></li>
                 <li><a href="logout.php">ログアウト</a></li>
             </ul>
@@ -53,7 +52,7 @@ $sql_result = $db->query($sql); //$sqlを実行
     </div>
 </nav>
 <!--=================end ナビバー==================-->
-<div class="content" id="menu">
+<div class="contents" id="menu">
 <?php if($_SESSION['USERID']=='ゲスト'):?><p>ゲストでログインしているときは一部の情報と機能のみの公開となっています。<br>ID登録してログインすると観光地名よりホームページへとぶことができます</p><?php endif ?>
 
   <div class="contents-head middle-text">
@@ -81,7 +80,7 @@ $sql_result = $db->query($sql); //$sqlを実行
       <div class="select-contents">
         <?php $imgOrder = $key+1; //画像の名前に合わせるための変数 ?>
         <span><a href=<?php if($_SESSION['USERID']!=='ゲスト'){echo '"'.$value['ホームページ'].'"'.'target="_brank"';} ?> ><img class="contents-image middle-text" src="../img/s_<?php if($imgOrder<10){ echo '00'.$imgOrder;}elseif($imgOrder<100){echo '0'.$imgOrder;}else{ echo $imgOrder;} ?>.jpg"></a></span>
-        <p class="arrow_box"><?php echo $value['説明文'];?></p>
+        <?php if($_SESSION['USERID'] !== 'ゲスト'): ?><p class="arrow_box"><?php echo $value['説明文'];?></p><?php endif ?>
         <div class="contents-details">
           <ul>
             <li><h3>
