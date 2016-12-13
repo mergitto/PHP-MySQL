@@ -33,7 +33,20 @@ PDOを用いてMySQLと接続しています。
 $dsn = 'mysql:dbname=dbName; host=localhost; charset=utf8';
 $usr = 'userName';
 $passwd = 'password';
-```
+```    
+###top.php
+メインの画面になります。session変数を用いてゲストでログインしたときとID登録をしてログインしたときでは使える機能に差ができるようにしています。<br>
+
+### テーブル  
+
+| 開催予定        | 開催日          | お題                 | 参加人数|
+| --------------- |:---------------:| -------------------- | -------:|
+| Git勉強会 Vol.1 | 2013/07/06 (土) | Gitの基本操作        | 123     |
+| Git勉強会 Vol.2 | 2013/11/09 (土) | ブランチモデルとは？ | 456     |
+| Git勉強会 Vol.3 | 未定            | 課題管理との連携     | -       |
+※ここはフォントの関係でちょっと横幅が崩れて表示されるかも・・・
+
+### 区切り文字で囲われたコードブロック
 ###getcsv.php, createtable.php, insert.php
 **getcsv.php**<br>
 [鹿児島県の観光情報のオープンデータ（csv形式）](https://www.city.kagoshima.lg.jp/jousys/documents/5-1_kankou.csv)を読み込み、phpで連想配列として取り込む処理を書いてます。   
@@ -41,6 +54,8 @@ $passwd = 'password';
 新規ユーザー登録時のテーブルやオープンデータを挿入するためのテーブルを生成するためのqueryを記述しています。<br>
 開発環境で試してみるときには、ファイル内に「create文を実行するときのみ外す」という部分のコメントアウトタグを外し、直接このファイルをurlに打ち込みページを開くとDBにテーブルを作成してくれます。     
 **insert.php**<br>
-get.csvで連想配列にしたデータを用いて、作成したテーブルにデータを挿入します。createtable.php同様、データの挿入時にはコメントアウトタグを外してurlに直打ちするとデータをDBに取り込みます。    
+get.csvで連想配列にしたデータを用いて、作成したテーブルにデータを挿入します。createtable.php同様、データの挿入時にはコメントアウトタグを外してurlに直打ちするとデータをDBに取り込みます。    
+###getdata.php     
+DBからデータを取り出すqueryを書くだけのファイル
 ###作品掲載
 http://210-140-96-142.jp-east.compute.idcfcloud.com/php/bin/login.php
