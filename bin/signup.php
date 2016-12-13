@@ -5,13 +5,20 @@ require_once('../DbManager.php');
 // セッション開始
 session_start();
 
+$db = getDb();
+//userテーブルに格納されているnameを使ってnameが一意に識別できるようにする
+$user_name = "select name from user;";
+$user_name_result = $db->query($user_name);
+
+$error_js = $_POST['error'];
+
 // エラーメッセージ、登録完了メッセージの初期化
 $errorMessage = "";
 $SignUpMessage = "";
 
 // ログインボタンが押された場合
 if (isset($_POST["signUp"])) {
-    // 1. ユーザIDの入力チェック
+    // ユーザIDの入力チェック
     if (empty($_POST["username"])) {  // 値が空のとき
         $errorMessage = 'ユーザーIDが未入力です。';
     } else if (empty($_POST["password"])) {
@@ -20,7 +27,13 @@ if (isset($_POST["signUp"])) {
         $errorMessage = 'パスワードが未入力です。';
     }
 
-    if (!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["password2"]) && $_POST["password"] == $_POST["password2"]) {
+    foreach ($user_name_result as $key => $value) {
+      if($_POST['username'] == $value['name']){
+        $errorMessage = 'すでに登録されているユーザーです。';
+      }
+    }
+
+    if (!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["password2"]) && $_POST["password"] == $_POST["password2"] && empty($errorMessage)) {
         // 入力したユーザIDとパスワードを格納
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -53,29 +66,41 @@ if (isset($_POST["signUp"])) {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../css/logform.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>新規登録</title>
 </head>
 <body>
-<div class="container">
-    <div class="login-head-btn">
-        <a href="login.php"><button type="button">ログイン</button></a>
+<div class="bgimg">
+  
+  <div class="box">
+    <div class="box-1">かごんまのよかとこいっかすっで</div>
+    <div class="box-2">
+      鹿児島のいいところ教えます。<br>新規登録が済んだ人は
+      <a href="login.php"><button type="button">ログイン画面へ</button></a>
     </div>
-    <div class="title">
-        <h1>新規登録画面</h1>
-    </div>
-    <div class="form">
-        <form id="loginForm" name="loginForm" action="" method="POST">
-            <p>新規登録フォーム</p>
-            <div><font color="#ff0000"><?php echo $errorMessage ?></font></div>
-            <div><font color="#0000ff"><?php echo $SignUpMessage ?></font></div>
-            <p><label for="username">ユーザー名</label><input type="text" id="username" name="username" placeholder="ユーザー名を入力" value="<?php if (!empty($_POST["username"])) {echo htmlspecialchars($_POST["username"], ENT_QUOTES);} ?>"></p>
-            <p><label for="password">パスワード</label><input type="password" id="password" name="password" value="" placeholder="パスワードを入力"></p>
-            <p><label for="password2">パスワード(確認用)</label><input type="password" id="password2" name="password2" value="" placeholder="再度パスワードを入力"></p>
-            <div class="login-btn">
-                <input type="submit" id="signUp" name="signUp" value="新規登録">
+    <form id="loginForm" name="loginForm" action="" method="POST">
+            <div id="error"><font color="#ff0000"><?php echo $errorMessage ?></font></div>
+            <input type="text" hidden name="error" value="<?php echo $errorMessage;?>">
+            <div id="sign"><font color="#ffffff"><?php echo $SignUpMessage ?></font></div>
+            <div id="new_form">
+              <p>新規登録フォーム</p>
+              <p><label for="username">ユーザー名</label><input type="text" id="username" name="username" placeholder="ユーザー名を入力" value="<?php if (!empty($_POST["username"])) {echo htmlspecialchars($_POST["username"], ENT_QUOTES);} ?>"></p>
+              <p><label for="password">パスワード</label><input type="password" id="password" name="password" value="" placeholder="パスワードを入力"></p>
+              <p><label for="password2">パスワード(確認用)</label><input type="password" id="password2" name="password2" value="" placeholder="再度パスワードを入力"></p>
+              <div class="login-btn">
+                  <input type="submit" id="signUp" name="signUp" value="登録">
+              </div>
             </div>
         </form>
-    </div>
+  </div>
 </div>
-</body>
+<script>
+  $(function(){
+    //errorメッセージが出なければ新規登録フォームをフェードアウトする
+    if($('#error').text() == "" && $('#sign').text() != ""){
+      $('#new_form').fadeOut();
+    }
+  });
+</script>
+</body
 </html>

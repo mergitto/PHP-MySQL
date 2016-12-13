@@ -69,33 +69,32 @@ if(isset($_POST['guestLogin'])){
 
 <!doctype html>
 <html>
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../css/logform.css">
-    <title>ログイン</title>
-    </head>
-    <body>
-    <div class="container">
-        <div class="login-head-btn">
-            <a href="signup.php"><button type="button">新規登録</button></a>
-        </div>
-        <div class="title">
-            <h1>ログイン画面</h1>
-        </div>
-
-        <div class="form">
-            <form id="loginForm" name="loginForm" action="" method="POST">
-            <p>ログインフォーム</p>
-            <div><font color="#ff0000"><?php echo $errorMessage ?></font></div>
-            <p><label for="userid">ユーザーID</label><input type="text" id="userid" name="userid" placeholder="ユーザーIDを入力" value="<?php if (!empty($_POST["userid"])) {echo htmlspecialchars($_POST["userid"], ENT_QUOTES);} ?>"></p>
-            <p><label for="password">パスワード</label><input type="password" id="password" name="password" value="" placeholder="パスワードを入力"></p>
-            <div class="login-btn">
-                <input type="submit" id="login" name="login" value="ログイン">
-                <input type="submit" id="guestLogin" name="guestLogin" value="ゲストでログイン"> 
-            </div>
-        </form>
-        </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../css/logform.css">
+<title>ログイン</title>
+</head>
+<body>
+<div class="bgimg">
+  
+  <div class="box">
+    <div class="box-1">かごんまのよかとこいっかすっで</div>
+    <div class="box-2">
+      鹿児島のいいところ教えます。<br>登録が済んでいない人は
+      <a href="signup.php"><button type="button">新規登録画面へ</button></a>
     </div>
-    </body>
+    <form id="loginForm" name="loginForm" action="" method="POST">
+        <p>ログインフォーム</p>
+        <div><font color="#ff0000"><?php echo $errorMessage ?></font></div>
+        <p><label for="userid">ユーザーID</label><input type="text" id="userid" name="userid" placeholder="ユーザーIDを入力" value="<?php if (!empty($_POST["userid"])) {echo htmlspecialchars($_POST["userid"], ENT_QUOTES);} ?>"></p>
+        <p><label for="password">パスワード</label><input type="password" id="password" name="password" value="" placeholder="パスワードを入力"></p>
+        <div class="login-btn">
+            <input type="submit" id="login" name="login" value="ログイン">
+            <input type="submit" id="guestLogin" name="guestLogin" value="ゲストでログイン"> 
+        </div>
+    </form>
+  </div>
+</div>
+</body>
 </html>

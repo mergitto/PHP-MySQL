@@ -46,14 +46,17 @@ $sql_result = $db->query($sql); //$sqlを実行
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right sp_gnav">
                 <li><a href="login.php">ログイン</a></li>
-                <li><a href="logout.php">ログアウト</a></li>
+                <li><a href="logout.php" id="logOut">ログアウト</a></li>
             </ul>
         </div>
     </div>
 </nav>
 <!--=================end ナビバー==================-->
 <div class="contents" id="menu">
-<?php if($_SESSION['USERID']=='ゲスト'):?><p>ゲストでログインしているときは一部の情報と機能のみの公開となっています。<br>ID登録してログインすると観光地名よりホームページへとぶことができます</p><?php endif ?>
+<?php if($_SESSION['USERID']=='ゲスト'):?><p>ゲストでログインしているときは一部の情報と機能のみの公開となっています。<br>ID登録してログインすると観光地名よりホームページへとぶことができます</p>
+<?php else: ?>
+  <h4>画像を押すとホームページに飛ぶことができます。</h4>
+<?php endif ?>
 
   <div class="contents-head middle-text">
     鹿児島の観光情報
@@ -73,6 +76,7 @@ $sql_result = $db->query($sql); //$sqlを実行
   </div>
   <?php endif ?>
 
+  <div class="center-contents">
   <?php foreach ($sql_result as $key => $value) : ?>
     <?php if($_SESSION['USERID'] == 'ゲスト'):?>
       <?php if($key == 10){break;}?>
@@ -105,6 +109,20 @@ $sql_result = $db->query($sql); //$sqlを実行
         </div>
       </div>
   <?php endforeach ?>
+  </div>
 </div>
+<script type="text/javascript">
+$(function(){
+  $('#logOut').click(function(){
+    if(!confirm('本当にログアウトしますか。')){
+        /* キャンセルの時の処理 */
+        return false;
+    }else{
+        /*　OKの時の処理 */
+        location.href = 'logout.php';
+    }
+  });
+});
+</script>
 </body>
 </html>
