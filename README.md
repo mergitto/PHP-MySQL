@@ -60,4 +60,4 @@ get.csvで連想配列にしたデータを用いて、作成したテーブル�
 ###getdata.php     
 DBからデータを取り出すqueryを書くだけのファイル
 ###作品掲載
-http://210-140-96-142.jp-east.compute.idcfcloud.com/php/bin/login.php
+http://210-140-96-142.jp-east.compute.idcfcloud.com/php/bin/
