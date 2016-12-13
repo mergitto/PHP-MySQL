@@ -53,8 +53,12 @@ $sql_result = $db->query($sql); //$sqlを実行
     </div>
 </nav>
 <!--=================end ナビバー==================-->
-<div class="contents">
+<div class="content" id="menu">
 <?php if($_SESSION['USERID']=='ゲスト'):?><p>ゲストでログインしているときは一部の情報と機能のみの公開となっています。<br>ID登録してログインすると観光地名よりホームページへとぶことができます</p><?php endif ?>
+
+  <div class="contents-head middle-text">
+    鹿児島の観光情報
+  </div>
   <!--ジャンル分けによって検索を行う-->
   <?php if(!($_SESSION['USERID'] == 'ゲスト')): ?>
   <div class="search">
@@ -69,17 +73,15 @@ $sql_result = $db->query($sql); //$sqlを実行
     <a href="top.php">リセットする</a>
   </div>
   <?php endif ?>
-  
-  <div class="contents-head middle-text">
-    鹿児島の観光情報
-  </div>
+
   <?php foreach ($sql_result as $key => $value) : ?>
     <?php if($_SESSION['USERID'] == 'ゲスト'):?>
       <?php if($key == 10){break;}?>
     <?php endif ?>
       <div class="select-contents">
         <?php $imgOrder = $key+1; //画像の名前に合わせるための変数 ?>
-        <a href=<?php if($_SESSION['USERID']!=='ゲスト'){echo '"'.$value['ホームページ'].'"'.'target="_brank"';} ?> ><img class="contents-image middle-text" src="../img/s_<?php if($imgOrder<10){ echo '00'.$imgOrder;}elseif($imgOrder<100){echo '0'.$imgOrder;}else{ echo $imgOrder;} ?>.jpg"></a>
+        <span><a href=<?php if($_SESSION['USERID']!=='ゲスト'){echo '"'.$value['ホームページ'].'"'.'target="_brank"';} ?> ><img class="contents-image middle-text" src="../img/s_<?php if($imgOrder<10){ echo '00'.$imgOrder;}elseif($imgOrder<100){echo '0'.$imgOrder;}else{ echo $imgOrder;} ?>.jpg"></a></span>
+        <p class="arrow_box"><?php echo $value['説明文'];?></p>
         <div class="contents-details">
           <ul>
             <li><h3>

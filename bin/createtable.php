@@ -13,7 +13,6 @@ $table_name = "kagoshima";
   $create = substr($create, 0, -1);
   $create .= ");";
   echo $create; //実行されるquery
-  echo "<br>";
   //$create_result = $db->query($create); //create文を実行するときのみ外す
 
   $create_user = "CREATE TABLE IF NOT EXISTS user(id int(5) primary key auto_increment, name varchar(20), password varchar(100));";
@@ -22,17 +21,6 @@ $table_name = "kagoshima";
 
   $create_favorite = "CREATE TABLE IF NOT EXISTS favorite(id int(5) primary key auto_increment, name varchar(20),管理ID text);";
   //$create_favorite_result = $db->query($create_favorite); //create文を実行するときのみ外す
-
-echo '<br>';
-  $arrays = array();
-  $select = "select * from kagoshima;";
-  $select_result = $db->query($select);
-  foreach ($select_result as $key => $value) {
-    echo $value[$key];
-    //$arrays = $value;
-  }
-  //var_dump($arrays);
-
 
 }catch(PDOException $e){
   print "エラーメッセージ：{$e->getMessage()}";

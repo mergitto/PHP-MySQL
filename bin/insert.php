@@ -32,8 +32,6 @@ try{
     //echo $insertKago; //実行されるquery
     //$insert_K = $db->query($insertKago); //insert文を実行するときのみコメントを外す
   }
-  header("Location: http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/top.php");
-
 } catch(PDOException $e){
   print "エラーメッセージ：{$e->getMessage()}";
 }
