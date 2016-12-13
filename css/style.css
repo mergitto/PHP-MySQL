@@ -10,6 +10,9 @@ tr{
 ul{
   list-style: none;
 }
+.contents p{
+  font-size: 20px;
+}
 input[type='submit']{
   background-color: #323a45;
   color: white;
@@ -17,7 +20,9 @@ input[type='submit']{
   border-style: none;
 }
 .search{
+  width: 100%;
   margin-bottom: 10px;
+  text-align: center;
 }
 .middle-text{
   display: -webkit-flex;
@@ -26,6 +31,11 @@ input[type='submit']{
   align-items: center;
   -webkit-justify-content: center; 
   justify-content: center;
+}
+.center-contents{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 .contents{
   width: 90%;
@@ -69,7 +79,7 @@ input[type='submit']{
   cursor: pointer;
 }
 .select-contents{
-  width: 270px;
+  width: 300px;
   height: 510px;
   margin: 14px;
   margin-top: 0;
@@ -151,7 +161,7 @@ input[type='submit']{
 }
 .contents-image{
   background-color: #323a45;
-  width: 240px;
+  width: 270px;
   height: 192px;
   margin-bottom: 0;
   font-size: 20px;
@@ -162,6 +172,7 @@ input[type='submit']{
   width: 100%;
   height: 100%;
   background-size: cover;
+  border: 1px #f4f4f4;
 }
 #menu div{
   position: relative;
