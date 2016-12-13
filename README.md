@@ -35,11 +35,11 @@ $passwd = 'password';
 ```
 ###getcsv.php, createtable.php, insert.php
 **getcsv.php**<br>
-[鹿児島県の観光情報のオープンデータ（csv形式）](https://www.city.kagoshima.lg.jp/jousys/documents/5-1_kankou.csv)を読み込み、phpで連想配列として取り込む処理を書いてます。
+[鹿児島県の観光情報のオープンデータ（csv形式）](https://www.city.kagoshima.lg.jp/jousys/documents/5-1_kankou.csv)を読み込み、phpで連想配列として取り込む処理を書いてます。   
 **createtable.php**<br>
 新規ユーザー登録時のテーブルやオープンデータを挿入するためのテーブルを生成するためのqueryを記述しています。<br>
-開発環境で試してみるときには、ファイル内に「create文を実行するときのみ外す」という部分のコメントアウトタグを外し、直接このファイルをurlに打ち込みページを開くとDBにテーブルを作成してくれます。
+開発環境で試してみるときには、ファイル内に「create文を実行するときのみ外す」という部分のコメントアウトタグを外し、直接このファイルをurlに打ち込みページを開くとDBにテーブルを作成してくれます。     
 **insert.php**<br>
-get.csvで連想配列にしたデータを用いて、作成したテーブルにデータを挿入します。createtable.php同様、データの挿入時にはコメントアウトタグを外してurlに直打ちするとデータをDBに取り込みます。
+get.csvで連想配列にしたデータを用いて、作成したテーブルにデータを挿入します。createtable.php同様、データの挿入時にはコメントアウトタグを外してurlに直打ちするとデータをDBに取り込みます。    
 ###作品掲載
 http://210-140-96-142.jp-east.compute.idcfcloud.com/php/bin/login.php
